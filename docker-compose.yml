@@ -1,6 +1,6 @@
 version: "3"
 services:
-  recipes-service:
+  products-service:
     build: .
     volumes:
       - ./:/app:delegated
@@ -8,38 +8,15 @@ services:
     environment:
       LOG_LEVEL: "debug"
       DEBUG: "true"
-      # configure your IDE with this servername if you wanna use debug
-      PHP_IDE_CONFIG: "serverName=recipes-service-test"
-      # On MacOS you can use 'host.docker.internal' as IP
-      XDEBUG_CONFIG: "remote_enable=1 remote_host=<your IP here>"
 
-  # nginx will serve as PHP FastCGI proxy, and a proxy for the third party service (Unstable Recipe Provider)
   nginx:
     image: nginx:alpine
-    command: sh -c "tar -xzf /app/recipes.tar.gz -C /app && nginx -g 'daemon off;'"
     volumes:
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:delegated
       - ./:/app:delegated
     ports:
-      - "8080:80" # Recipes Service
-      - "3000:3000" # Unstable Recipe Provider
+      - "8080:80"
     expose:
-      - "3000"
       - "80"
     depends_on:
-      - recipes-service
-
-  test:
-    image: golang:stretch
-    volumes:
-      - ./docker/test:/go/src/app:delegated
-    depends_on:
-      - nginx
-    working_dir: /go/src/app
-    environment:
-      GO111MODULE: "on"
-    command:
-      - sleep
-      - "999999"
-
-  # You can add more services if you need
+      - products-service

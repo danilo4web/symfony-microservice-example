@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+
+  action.greet:
+    class: App\ProductsService\Actions\GreetAction
+    arguments:
+      $greeting: "Welcome to Products Service!"

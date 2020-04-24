@@ -1,0 +1,10 @@
+imports:
+  - { resource: framework.yml }
+  - { resource: actions.yml }
+
+services:
+  Psr\Log\LoggerInterface:
+    class: Symfony\Component\HttpKernel\Log\Logger
+    arguments:
+      $minLevel: '%env(LOG_LEVEL)%'
+      $output: "php://stdout"

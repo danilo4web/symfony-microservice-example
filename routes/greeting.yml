@@ -1,0 +1,4 @@
+greet:
+  path: /
+  controller: action.greet
+  methods: GET

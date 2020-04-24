@@ -1,0 +1,33 @@
+services:
+  _defaults:
+    autowire: true
+
+  Symfony\Component\EventDispatcher\EventDispatcherInterface:
+    class: Symfony\Component\EventDispatcher\EventDispatcher
+
+  Symfony\Component\Routing\RouteCollection:
+    factory: ['App\ProductsService\RouteFactory', getRoutes]
+    arguments:
+      - 'actions.yml'
+      - 'greeting.yml'
+
+  Symfony\Component\Routing\Matcher\UrlMatcher: ~
+
+  Symfony\Component\Routing\RequestContext: ~
+
+  Symfony\Component\HttpFoundation\RequestStack: ~
+
+  Symfony\Component\HttpKernel\Controller\ControllerResolverInterface:
+    class: Symfony\Component\HttpKernel\Controller\ContainerControllerResolver
+
+  Symfony\Component\HttpKernel\EventListener\RouterListener:
+    arguments:
+      $matcher: '@Symfony\Component\Routing\Matcher\UrlMatcher'
+
+  Symfony\Component\HttpKernel\HttpKernelInterface:
+    class: Symfony\Component\HttpKernel\HttpKernel
+    arguments:
+      $dispatcher: '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
+
+  App\ProductsService\WebApplication:
+    public: true

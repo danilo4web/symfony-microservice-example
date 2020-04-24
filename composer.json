@@ -1,6 +1,6 @@
 {
     "name": "danilo4web/symfony-microservice-example",
-    "description": "Customer Service API with Symfony components",
+    "description": "Product Service API with Symfony components",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -15,14 +15,17 @@
         "symfony/routing": "^4.2",
         "symfony/http-foundation": "^4.2",
         "symfony/config": "^4.2",
-        "symfony/yaml": "^4.2"
+        "symfony/yaml": "^4.2",
+        "symfony/http-kernel": "^4.2"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9",
-        "phpunit/php-code-coverage": "^8.0"
+    "autoload": {
+        "psr-4": {
+            "App\\ProductsService\\": "src"
+        }
     },
     "scripts": {
         "test": "phpunit --colors=always",
-        "test-coverage-html": "phpunit --colors=always --coverage-html code-coverage"
+        "test-coverage-html": "phpunit --colors=always --coverage-html code-coverage",
+        "phpstan": "./vendor/bin/phpstan analyse"
     }
 }
