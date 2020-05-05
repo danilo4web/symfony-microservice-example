@@ -8,3 +8,14 @@ services:
     arguments:
       $minLevel: '%env(LOG_LEVEL)%'
       $output: "php://stdout"
+
+  App\ProductsService\Service\ProductServiceInterface:
+    class: App\ProductsService\Service\ProductService
+    autowire: true
+
+  App\ProductsService\Repository\ProductRepositoryInterface:
+    class: App\ProductsService\Repository\ProductRepository
+    autowire: true
+
+  App\ProductsService\Entity\ProductEntity:
+    class: App\ProductsService\Entity\ProductEntity

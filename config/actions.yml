@@ -7,3 +7,6 @@ services:
     class: App\ProductsService\Actions\GreetAction
     arguments:
       $greeting: "Welcome to Products Service!"
+
+  action.show_product:
+    class: App\ProductsService\Actions\ShowProductAction
