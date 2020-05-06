@@ -32,4 +32,12 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return [];
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function findProducts(int $skip, int $take): array
+    {
+        return [];
+    }
 }

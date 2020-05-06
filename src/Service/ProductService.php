@@ -34,4 +34,12 @@ class ProductService implements ProductServiceInterface
     {
         return $this->productRepository->getProduct($productId);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getProducts(int $skip, int $take): array
+    {
+        return $this->productRepository->findProducts($skip, $take);
+    }
 }

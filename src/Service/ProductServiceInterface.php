@@ -17,4 +17,13 @@ interface ProductServiceInterface
      * @return array
      */
     public function getProduct(int $productId): array;
+
+    /**
+     * Get products
+     *
+     * @param integer $skip
+     * @param integer $take
+     * @return array
+     */
+    public function getProducts(int $skip, int $take): array;
 }
