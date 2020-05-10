@@ -1,6 +1,6 @@
-FROM php:7.3-fpm-alpine3.9
+FROM php:7.4.4-fpm
 WORKDIR /var/www/html
 
-RUN docker-php-ext-install opcache
-RUN mkdir /var/www/html/cache
-RUN chmod 777 /var/www/html/cache -Rfv
+RUN apt-get update && apt-get upgrade -y \
+    && pecl install mongodb && docker-php-ext-enable mongodb \
+    && docker-php-ext-install opcache
