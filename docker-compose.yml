@@ -21,6 +21,9 @@ services:
     volumes:
       - ./:/app:delegated
       - ./docker/fpm.conf:/usr/local/etc/php-fpm.d/www.conf:delegated
+    environment:
+      LOG_LEVEL: "debug"
+      DEBUG: "true"
   mongodb:
     image: mongo:latest
     container_name: products-service_mongo
