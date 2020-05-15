@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\EventListener\RouterListener;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\TerminableInterface;
 
@@ -43,7 +44,7 @@ class WebApplication
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      * @return void
-     * @throws NotFoundHttpException
+     * @throws \Exception
      */
     public function run(Request $request): void
     {
@@ -56,6 +57,9 @@ class WebApplication
             }
         } catch (NotFoundHttpException $exception) {
             (new JsonResponse(['error' => sprintf('Path %s does not exist.', $request->getPathInfo())],
+                Response::HTTP_NOT_FOUND))->send();
+        } catch (HttpException $exception) {
+            (new JsonResponse(['error' => $exception->getMessage()],
                 Response::HTTP_NOT_FOUND))->send();
         }
     }
