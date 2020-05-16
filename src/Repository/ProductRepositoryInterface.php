@@ -17,13 +17,4 @@ interface ProductRepositoryInterface
      * @return array
      */
     public function getProduct(int $productId): array;
-
-    /**
-     * Find Products
-     *
-     * @param integer $skip
-     * @param integer $take
-     * @return array
-     */
-    public function findProducts(int $skip, int $take): array;
 }
