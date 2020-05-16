@@ -4,9 +4,11 @@ namespace App\ProductsService\Actions;
 
 use Symfony\Component\HttpFoundation\{Request, Response, JsonResponse};
 use App\ProductsService\Service\ProductServiceInterface;
-use App\ProductsService\Entity\ProductEntity;
 
-
+/**
+ * Class ShowProductAction
+ * @package App\ProductsService\Actions
+ */
 final class ShowProductAction implements ShowProductActionInterface
 {
     /** @var ProductServiceInterface $productService */
@@ -32,11 +34,11 @@ final class ShowProductAction implements ShowProductActionInterface
 
         try {
 
-            /** @var ProductEntity $productEntity */
-            $productEntity = $this->productService->getProduct($productId);
+            /** @var array $response */
+            $response = $this->productService->getProduct($productId);
 
-            if ($productEntity instanceof ProductEntity) {
-                return new JsonResponse([$productEntity->toArray()], Response::HTTP_OK);
+            if ($response) {
+                return new JsonResponse($response, Response::HTTP_OK);
             }
 
         } catch (\RuntimeException $exception) {
