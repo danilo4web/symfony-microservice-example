@@ -3,6 +3,14 @@ imports:
   - { resource: actions.yml }
 
 services:
+  _defaults:
+    autowire: true
+
+  MongoDB\Driver\Manager:
+    class: MongoDB\Driver\Manager
+    arguments:
+      $uri: '%env(mongodb_server)%'
+
   Psr\Log\LoggerInterface:
     class: Symfony\Component\HttpKernel\Log\Logger
     arguments:
@@ -11,11 +19,11 @@ services:
 
   App\ProductsService\Service\ProductServiceInterface:
     class: App\ProductsService\Service\ProductService
-    autowire: true
 
   App\ProductsService\Repository\ProductRepositoryInterface:
     class: App\ProductsService\Repository\ProductRepository
-    autowire: true
+    arguments:
+      - "@productRepositoryAdapter"
 
-  App\ProductsService\Entity\ProductEntity:
-    class: App\ProductsService\Entity\ProductEntity
+  productRepositoryAdapter:
+    class: App\ProductsService\Repository\Adapters\Mongo\ProductRepositoryAdapter
