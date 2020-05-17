@@ -17,4 +17,13 @@ interface ProductRepositoryAdapterInterface
      * @return array
      */
     public function getProduct(int $productId): array;
+
+    /**
+     * Find Products
+     *
+     * @param array $params
+     * @param array $options
+     * @return array
+     */
+    public function findProducts(array $params, array $options): array;
 }

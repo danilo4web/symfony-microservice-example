@@ -2,3 +2,8 @@ product.show:
   path: /product/{id}
   controller: action.show_product
   methods: GET
+
+product.find:
+  path: /products
+  controller: action.find_product
+  methods: POST

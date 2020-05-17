@@ -17,4 +17,12 @@ class ProductRepository extends DefaultRepository implements ProductRepositoryIn
     {
         return $this->repositoryAdapter->getProduct($productId);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function findProducts(array $params, $options = []): array
+    {
+        return $this->repositoryAdapter->findProducts($params, $options);
+    }
 }

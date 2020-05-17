@@ -24,4 +24,20 @@ class ProductRepositoryAdapter extends MongoRepositoryAdapter implements Product
 
         return (array) current($result);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function findProducts(array $params, $options = []): array
+    {
+        $result = $this->find($params, $options);
+
+        $response = [];
+        foreach ($result as $document) {
+            $response[] = (array) $document;
+        }
+
+        return $response;
+    }
+
 }

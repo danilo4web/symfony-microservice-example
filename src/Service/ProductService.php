@@ -3,7 +3,6 @@
 namespace App\ProductsService\Service;
 
 use App\ProductsService\Repository\ProductRepositoryInterface;
-use App\ProductsService\Entity\ProductEntity;
 
 /**
  * Class ProductService
@@ -38,8 +37,13 @@ class ProductService implements ProductServiceInterface
     /**
      * @inheritDoc
      */
-    public function getProducts(int $skip, int $take): array
+    public function findProducts(array $productParams): array
     {
-        return $this->productRepository->findProducts($skip, $take);
+        $options = [
+            'projection' => ['_id' => 0],
+            'sort' => ['name' => -1]
+        ];
+
+        return $this->productRepository->findProducts($productParams, $options);
     }
 }

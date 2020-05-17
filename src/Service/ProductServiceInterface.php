@@ -11,7 +11,7 @@ namespace App\ProductsService\Service;
 interface ProductServiceInterface
 {
     /**
-     * Find a products by ID
+     * Get a product by ID
      *
      * @param integer $productId
      * @return array
@@ -19,11 +19,12 @@ interface ProductServiceInterface
     public function getProduct(int $productId): array;
 
     /**
-     * Get products
+     * Find products
      *
-     * @param integer $skip
-     * @param integer $take
+     * @param array $productParams
      * @return array
      */
-    public function getProducts(int $skip, int $take): array;
+    public function findProducts(array $productParams): array;
+
+
 }

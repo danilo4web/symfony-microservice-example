@@ -10,3 +10,6 @@ services:
 
   action.show_product:
     class: App\ProductsService\Actions\ShowProductAction
+
+  action.find_product:
+    class: App\ProductsService\Actions\FindProductAction
