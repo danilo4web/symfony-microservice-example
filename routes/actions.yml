@@ -7,3 +7,8 @@ product.find:
   path: /products
   controller: action.find_product
   methods: POST
+
+product.list:
+  path: /products
+  controller: action.list_product
+  methods: GET

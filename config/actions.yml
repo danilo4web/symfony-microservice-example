@@ -11,5 +11,8 @@ services:
   action.show_product:
     class: App\ProductsService\Actions\ShowProductAction
 
+  action.list_product:
+    class: App\ProductsService\Actions\ListProductAction
+
   action.find_product:
     class: App\ProductsService\Actions\FindProductAction
