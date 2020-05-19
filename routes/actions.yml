@@ -12,3 +12,8 @@ product.list:
   path: /products
   controller: action.list_product
   methods: GET
+
+product.insert:
+  path: /product
+  controller: action.insert_product
+  methods: POST

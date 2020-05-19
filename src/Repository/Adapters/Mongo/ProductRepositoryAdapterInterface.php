@@ -26,4 +26,12 @@ interface ProductRepositoryAdapterInterface
      * @return array
      */
     public function findProducts(array $params, array $options): array;
+
+    /**
+     * Insert Product
+     *
+     * @param array $productsData
+     * @return boolean
+     */
+    public function insertProduct(array $productsData): bool;
 }

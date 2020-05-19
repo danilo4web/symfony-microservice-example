@@ -46,4 +46,12 @@ class ProductService implements ProductServiceInterface
 
         return $this->productRepository->findProducts($productParams, $options);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function insertProduct(array $productData): bool
+    {
+        return $this->productRepository->insertProduct($productData);
+    }
 }

@@ -25,4 +25,12 @@ class ProductRepository extends DefaultRepository implements ProductRepositoryIn
     {
         return $this->repositoryAdapter->findProducts($params, $options);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function insertProduct(array $productsData): bool
+    {
+        return $this->repositoryAdapter->insertProduct($productsData);
+    }
 }

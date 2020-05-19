@@ -26,5 +26,11 @@ interface ProductServiceInterface
      */
     public function findProducts(array $productParams): array;
 
-
+    /**
+     * Insert Product
+     *
+     * @param array $productData
+     * @return boolean
+     */
+    public function insertProduct(array $productData): bool;
 }

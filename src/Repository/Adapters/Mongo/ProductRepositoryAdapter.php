@@ -40,4 +40,12 @@ class ProductRepositoryAdapter extends MongoRepositoryAdapter implements Product
         return $response;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function insertProduct(array $productsData): bool
+    {
+        $result = $this->save($productsData);
+        return $result->getInsertedCount() >= 1;
+    }
 }

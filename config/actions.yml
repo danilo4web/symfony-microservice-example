@@ -16,3 +16,6 @@ services:
 
   action.find_product:
     class: App\ProductsService\Actions\FindProductAction
+
+  action.insert_product:
+    class: App\ProductsService\Actions\InsertProductAction
